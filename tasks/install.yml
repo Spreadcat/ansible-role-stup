@@ -1,0 +1,38 @@
+---
+- name: UPDATE APT CACHE
+  ansible.builtin.apt:
+    cache_valid_time: 3600
+    update_cache: true
+  changed_when: false
+  become: true
+  when:
+    - ansible_os_family|lower == 'debian'
+
+- name: INSTALL GIT
+  ansible.builtin.package:
+    name: git
+    state: present
+  become: true
+
+- name: CLONE REMOTE GIT REPOSITORY TO TMP
+  ansible.builtin.git:
+    repo: "{{ stup_url_git_repository }}"
+    dest: "/tmp/git_stup"
+    version: v1.0.0
+
+- name: DEPLOY SCRIPT FILE
+  become: true
+  ansible.builtin.copy:
+    dest: /usr/local/bin/stup
+    src: /tmp/git_stup/stup
+    mode: '0755'
+    force: true
+    remote_src: true
+
+- name: CREATE CATEGORIES ROOT
+  ansible.builtin.file:
+    state: directory
+    path: "{{ stup_config_categories_root }}"
+    owner: "{{ stup_config_owner }}"
+    group: "{{ stup_config_group }}"
+    mode: '0750'

@@ -1,0 +1,46 @@
+---
+# Config tasks for this role
+
+- name: SET CONFIG OPTIONS
+  community.general.ini_file:
+    state: present
+    path: "{{ stup_config_path }}"
+    section: null
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+    owner: "{{ stup_config_owner }}"
+    group: "{{ stup_config_group }}"
+    mode: '0750'
+    no_extra_spaces: true
+  loop:
+    - option: categories_root
+      value: "{{ stup_config_categories_root }}"
+    - option: default_category
+      value: "{{ stup_config_default_category }}"
+    - option: stup_editor
+      value: "{{ stup_config_stup_editor }}"
+    - option: default_command
+      value: "{{ stup_config_default_command }}"
+    - option: default_show_at
+      value: "{{ stup_config_default_show_at }}"
+    - option: default_log_days
+      value: "{{ stup_config_default_log_days }}"
+    - option: default_add_at
+      value: "{{ stup_config_default_add_at }}"
+    - option: default_edit_at
+      value: "{{ stup_config_default_edit_at }}"
+    - option: default_copy_from
+      value: "{{ stup_config_default_copy_from }}"
+    - option: default_copy_to
+      value: "{{ stup_config_default_copy_to }}"
+    - option: pager
+      value: "{{ stup_config_default_pager }}"
+
+- name: SET CONFIGURATION FILE
+  ansible.builtin.lineinfile:
+    path: "{{ stup_config_categories_root }}/categories.conf"
+    line: "{{ stup_config_default_category }}"
+    create: true
+    owner: "{{ stup_config_owner }}"
+    group: "{{ stup_config_group }}"
+    mode: '0750'

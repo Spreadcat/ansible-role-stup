@@ -1,0 +1,47 @@
+---
+# defaults file for stup
+#
+# URL for downloading the STUP GIT repository
+stup_url_git_repository: 'https://github.com/iridakos/stup'
+
+# Default owner for stup config
+stup_config_owner: "{{ lookup('env', 'USER') }}"
+
+# Default group for stup config
+stup_config_group: "{{ lookup('env', 'USER') }}"
+
+# Default location for stup config
+stup_config_path: "{{ lookup('env', 'HOME') }}/.config/stup.conf"
+
+# path to stup storage location
+stup_config_categories_root: "{{ lookup('env', 'HOME') }}/stup"
+
+# stup default category
+stup_config_default_category: personal
+
+# stup default editor
+stup_config_stup_editor: "{{ lookup('env', 'EDITOR') }}"
+
+# stup default command
+stup_config_default_command: show
+
+# stup default show day
+stup_config_default_show_at: yesterday
+
+# stup default log days
+stup_config_default_log_days: 2
+
+# stup default add day
+stup_config_default_add_at: today
+
+# stup default edit day
+stup_config_default_edit_at: today
+
+# stup default copy source
+stup_config_default_copy_from: yesterday
+
+# stup default copy destination
+stup_config_default_copy_to: today
+
+# stup default pager
+stup_config_default_pager: more

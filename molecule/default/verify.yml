@@ -1,0 +1,64 @@
+---
+# This is an example playbook to execute Ansible tests.
+
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+
+    - name: MOLECULE - INCLUDE VARIABLES
+      ansible.builtin.include_vars:
+        file: "{{ item }}"
+      loop:
+        - ../../defaults/main.yml
+        - ./variables.yml
+
+    - name: MOLECULE - ENSURE STUP SCRIPT IS INSTALLED
+      ansible.builtin.file:
+        name: /usr/local/bin/stup
+        owner: root
+        group: root
+        mode: '0755'
+      register: _verify_file
+      failed_when: (
+        (_verify_file is changed) or
+        (_verify_file is failed)
+        )
+
+    - name: MOLECULE - ENSURE CONFIG PARAMETER ARE SET
+      community.general.ini_file:
+        state: present
+        path: "{{ stup_config_path }}"
+        section: null
+        option: "{{ item.option }}"
+        value: "{{ item.value }}"
+        mode: '0750'
+        no_extra_spaces: true
+      register: _verify_ini_file
+      failed_when: (
+        (_verify_ini_file is changed) or
+        (_verify_ini_file is failed)
+        )
+      loop:
+        - option: categories_root
+          value: "{{ stup_config_categories_root }}"
+        - option: default_category
+          value: "{{ stup_config_default_category }}"
+        - option: stup_editor
+          value: "{{ stup_config_stup_editor }}"
+        - option: default_command
+          value: "{{ stup_config_default_command }}"
+        - option: default_show_at
+          value: "{{ stup_config_default_show_at }}"
+        - option: default_log_days
+          value: "{{ stup_config_default_log_days }}"
+        - option: default_add_at
+          value: "{{ stup_config_default_add_at }}"
+        - option: default_edit_at
+          value: "{{ stup_config_default_edit_at }}"
+        - option: default_copy_from
+          value: "{{ stup_config_default_copy_from }}"
+        - option: default_copy_to
+          value: "{{ stup_config_default_copy_to }}"
+        - option: pager
+          value: "{{ stup_config_default_pager }}"
