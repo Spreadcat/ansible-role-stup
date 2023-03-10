@@ -1,5 +1,5 @@
 ---
-stup_config_owner: sc
-stup_config_group: sc
-stup_config_path: /home/sc/.config/stup.conf
-stup_config_categories_root: /home/sc/stup
+stup_config_owner: ansible
+stup_config_group: ansible
+stup_config_path: /home/ansible/.config/stup.conf
+stup_config_categories_root: /home/ansible/stup

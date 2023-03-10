@@ -6,14 +6,14 @@
   gather_facts: false
   tasks:
 
-    - name: MOLECULE - INCLUDE VARIABLES
+    - name: Molecule | Include Variables.
       ansible.builtin.include_vars:
         file: "{{ item }}"
       loop:
         - ../../defaults/main.yml
         - ./variables.yml
 
-    - name: MOLECULE - ENSURE STUP SCRIPT IS INSTALLED
+    - name: Molecule | Ensure stup script is installed.
       ansible.builtin.file:
         name: /usr/local/bin/stup
         owner: root
@@ -25,7 +25,7 @@
         (_verify_file is failed)
         )
 
-    - name: MOLECULE - ENSURE CONFIG PARAMETER ARE SET
+    - name: Molecule | Ensure config paarameters are set.
       community.general.ini_file:
         state: present
         path: "{{ stup_config_path }}"
