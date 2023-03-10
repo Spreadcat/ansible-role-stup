@@ -13,6 +13,12 @@ It also requires a local installation of [GIT][#git], which will be automaticall
 Available variables are listed below, along with default values (see `defaults/main.yml`):
 
 ```yaml
+stup_version: "v1.0.0"
+```
+
+* Defines the stup version to install. Can also be any GIT reference, HEAD, hash, etc.
+
+```yaml
 stup_url_git_repository: 'https://github.com/iridakos/stup'
 ```
 

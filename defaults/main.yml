@@ -45,3 +45,11 @@ stup_config_default_copy_to: today
 
 # stup default pager
 stup_config_default_pager: more
+
+# Set the default deployment version for the script.
+# Each version must match an existing tag in the directory.
+#
+# Example:
+#   stup_version: v1.0.0
+# doca tags:role type:str
+stup_version: v1.0.0

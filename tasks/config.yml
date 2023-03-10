@@ -1,7 +1,6 @@
 ---
 # Config tasks for this role
-
-- name: SET CONFIG OPTIONS
+- name: Config | Set config options
   community.general.ini_file:
     state: present
     path: "{{ stup_config_path }}"
@@ -36,7 +35,7 @@
     - option: pager
       value: "{{ stup_config_default_pager }}"
 
-- name: SET CONFIGURATION FILE
+- name: Config | Set configuration file
   ansible.builtin.lineinfile:
     path: "{{ stup_config_categories_root }}/categories.conf"
     line: "{{ stup_config_default_category }}"
