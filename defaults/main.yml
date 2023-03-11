@@ -53,3 +53,11 @@ stup_config_default_pager: more
 #   stup_version: v1.0.0
 # doca tags:role type:str
 stup_version: v1.0.0
+
+
+# Sets the name and location of the stup script file.
+#
+# Example:
+#   stup_path_binary: "/usr/local/bin/stup"
+# doca tags:other
+stup_path_binary: "/usr/local/bin/stup"

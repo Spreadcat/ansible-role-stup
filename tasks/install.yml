@@ -25,7 +25,7 @@
 - name: Install | Deploy script file
   become: true
   ansible.builtin.copy:
-    dest: /usr/local/bin/stup
+    dest: "{{ stup_path_binary }}"
     src: /tmp/git_stup/stup
     mode: '0755'
     force: true
