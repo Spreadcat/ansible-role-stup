@@ -1,13 +1,23 @@
 ---
-# defaults file for stup
-#
 # URL for downloading the STUP GIT repository
+#
+# Example:
+#   stup_url_git_repository: "https://github.com/iridakos/stup"
+# doca tags:role
 stup_url_git_repository: 'https://github.com/iridakos/stup'
 
-# Default owner for stup config
+# Default owner for stup config. Usually set to the user running the role.
+#
+# Example:
+#   stup_config_owner: "john"
+# doca tags:role type:string
 stup_config_owner: "{{ lookup('env', 'USER') }}"
 
-# Default group for stup config
+# Default group for stup config. Usually set to the group of the user running the role.
+#
+# Example:
+#   stup_config_group: "john"
+# doca tags:role type:string
 stup_config_group: "{{ lookup('env', 'USER') }}"
 
 # Default location for stup config
