@@ -1,63 +1,139 @@
 ---
-# defaults file for stup
-#
-# URL for downloading the STUP GIT repository
-stup_url_git_repository: 'https://github.com/iridakos/stup'
-
-# Default owner for stup config
-stup_config_owner: "{{ lookup('env', 'USER') }}"
-
-# Default group for stup config
-stup_config_group: "{{ lookup('env', 'USER') }}"
-
-# Default location for stup config
-stup_config_path: "{{ lookup('env', 'HOME') }}/.config/stup.conf"
-
-# path to stup storage location
-stup_config_categories_root: "{{ lookup('env', 'HOME') }}/stup"
-
-# stup default category
-stup_config_default_category: personal
-
-# stup default editor
-stup_config_stup_editor: "{{ lookup('env', 'EDITOR') }}"
-
-# stup default command
-stup_config_default_command: show
-
-# stup default show day
-stup_config_default_show_at: yesterday
-
-# stup default log days
-stup_config_default_log_days: 2
-
-# stup default add day
-stup_config_default_add_at: today
-
-# stup default edit day
-stup_config_default_edit_at: today
-
-# stup default copy source
-stup_config_default_copy_from: yesterday
-
-# stup default copy destination
-stup_config_default_copy_to: today
-
-# stup default pager
-stup_config_default_pager: more
-
-# Set the default deployment version for the script.
-# Each version must match an existing tag in the directory.
+# URL for downloading the STUP GIT repository.
 #
 # Example:
-#   stup_version: v1.0.0
+#   stup_url_git_repository: "https://github.com/iridakos/stup"
+#
+# doca tags:other
+stup_url_git_repository: 'https://github.com/iridakos/stup'
+
+# Default owner for STUP configuration files. Usually set to the user running
+# the role.
+#
+# Example:
+#   stup_config_owner: "john"
+#
+# doca tags:other type:string
+stup_config_owner: "{{ lookup('env', 'USER') }}"
+
+# Default group for STUP configuration files. Usually set to the group of the
+# user running the role.
+#
+# Example:
+#   stup_config_group: "john"
+#
+# doca tags:other type:string
+stup_config_group: "{{ lookup('env', 'USER') }}"
+
+# Default file path for STUP configuration file.
+#
+# Example:
+#   stup_config_path: "~/.config/stup/stup.conf"
+#
+# doca tag:role
+stup_config_path: "{{ lookup('env', 'HOME') }}/.config/stup.conf"
+
+# Path to the STUP storage directory location. The default is a directory
+# `stup` in the home directory of the current user.
+#
+# Example:
+#   stup_config_categories_root: "~/stup"
+#
+# doca tag:role
+stup_config_categories_root: "{{ lookup('env', 'HOME') }}/stup"
+
+# Default category for STUP entries.
+#
+# Example:
+#   stup_config_default_category: "personal"
+#
+# doca tag:role
+stup_config_default_category: personal
+
+# Default editor for editig the STUP markdown files.
+#
+# doca tag:other type:string
+stup_config_stup_editor: "{{ lookup('env', 'EDITOR') }}"
+
+# Default command of STUP when executed without any other parameters.
+#
+# Example:
+#   stup_config_default_command: "show"
+#
+# doca tag:other
+stup_config_default_command: show
+
+# Default day that STUP shows when no day is specified.
+#
+# Example:
+#   stup_config_default_show_at: "yesterday"
+stup_config_default_show_at: yesterday
+
+# Number of logs to output by STUP from previous days where entries exist.
+#
+# Example:
+#   stup_config_default_log_days: 2
+#
+# doca tag:other
+stup_config_default_log_days: 2
+
+# Default day that new entries will be added to when no day is specified.
+#
+# Example:
+#   stup_config_default_add_at: "today"
+#
+# doca tag:other
+stup_config_default_add_at: today
+
+# Default day to edit when no day has been specified.
+#
+# Example:
+#   stup_config_default_edit_at: "today"
+#
+# doca tag:other
+stup_config_default_edit_at: today
+
+# Default copy source for STUP from which entries will be copied to the
+# destination source when no source is specified.
+#
+# Example:
+#   stup_config_default_copyu_from: "yesterday"
+#
+# doca tag:other
+stup_config_default_copy_from: yesterday
+
+# Default copy destination for STUP to which entries will be copied from source
+# when no destination has been specified.
+#
+# Example:
+#   stup_config_default_copy_to: "today"
+#
+# doca tag:other
+stup_config_default_copy_to: today
+
+# Program name with the pager to use for very long outputs. Tools like `more` or
+# `less` are usually defined.
+#
+# Example:
+#   stup_config_Default_pager: "more"
+#
+# doca tag:other
+stup_config_default_pager: more
+
+# Set the deployment version for the script.
+# Each version must match an existing tag in the Git directory.
+#
+# Example:
+#   stup_version: "v1.0.0"
+#
 # doca tags:role type:str
-stup_version: v1.0.0
+stup_version: "v1.0.0"
 
 
 # Sets the name and location of the stup script file.
 #
 # Example:
 #   stup_path_binary: "/usr/local/bin/stup"
+#
 # doca tags:other
 stup_path_binary: "/usr/local/bin/stup"

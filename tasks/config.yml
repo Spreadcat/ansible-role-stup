@@ -1,6 +1,9 @@
 ---
 # Config tasks for this role
-- name: Config | Set config options
+
+# This module should be replaced with the template module instead.
+# A header in the file is also missing.
+- name: Config | Set config options.
   community.general.ini_file:
     state: present
     path: "{{ stup_config_path }}"
@@ -35,7 +38,7 @@
     - option: pager
       value: "{{ stup_config_default_pager }}"
 
-- name: Config | Set configuration file
+- name: Config | Set configuration file.
   ansible.builtin.lineinfile:
     path: "{{ stup_config_categories_root }}/categories.conf"
     line: "{{ stup_config_default_category }}"

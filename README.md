@@ -13,102 +13,102 @@ It also requires a local installation of [GIT][#git], which will be automaticall
 Available variables are listed below, along with default values (see `defaults/main.yml`):
 
 ```yaml
-stup_version: "v1.0.0"
+stup_config_categories_root: str
 ```
 
-* Defines the stup version to install. Can also be any GIT reference, HEAD, hash, etc.
+* Path to the STUP storage directory location. The default is a directory `stup` in the home directory of the current user.
 
 ```yaml
-stup_url_git_repository: 'https://github.com/iridakos/stup'
+stup_config_default_category: str
 ```
 
-URL to the GitHub repository from where to install [stup][#github].
+* Default category for STUP entries.
 
 ```yaml
-stup_config_owner: "{{ lookup('env', 'USER') }}"
+stup_config_path: str
 ```
 
-Sets the user name for which [stup][#github] will be installed.
+* Default file path for STUP configuration file.
 
 ```yaml
-stup_config_group: "{{ lookup('env', 'USER') }}"
+stup_version: str
 ```
 
-Set the group name for the user for which [stup][#github] will be installed.
+* Set the deployment version for the script. Each version must match an existing tag in the Git directory.
+
+## Other Variables
 
 ```yaml
-stup_config_path: "{{ lookup('env', 'HOME') }}/.config/stup.conf
+stup_config_default_add_at: str
 ```
 
-Sets the path for the [stup][#github] configuration file.
+* Default day that new entries will be added to when no day is specified.
 
 ```yaml
-setup_config_categories_root: "{{ lookup('env', 'HOME') }}/stup"
+stup_config_default_command: str
 ```
 
-Path to the storage directory for [stup][#github].
+* Default command of STUP when executed without any other parameters.
 
 ```yaml
-stup_config_default_category: personal
+stup_config_default_copy_from: str
 ```
 
-String with the name of the default category.
+* Default copy source for STUP from which entries will be copied to the destination source when no source is specified.
 
 ```yaml
-stup_config_stup_editor: "{{ lookup('env', 'EDITOR') }}"
+stup_config_default_copy_to: str
 ```
 
-String with the name of the default editor to use. Is being set to the environment variable `EDITOR`.
-
-## Other variables
+* Default copy destination for STUP to which entries will be copied from source when no destination has been specified.
 
 ```yaml
-stup_config_default_command: show
+stup_config_default_edit_at: str
 ```
 
-String setting the default command when [stup][#github] is being run without any parameters.
+* Default day to edit when no day has been specified.
 
 ```yaml
-stup_config_default_show_at: yesterday
+stup_config_default_log_days: int
 ```
 
-String to define the default day to show for [stup][#github].
+* Number of logs to output by STUP from previous days where entries exist.
 
 ```yaml
-stup_config_default_log_days: 2
+stup_config_default_pager: str
 ```
 
-Integer with the number of days to show in the log.
+* Program name with the pager to use for very long outputs. Tools like `more` or `less` are usually defined.
 
 ```yaml
-stup_config_default_add_at: today
+stup_config_group: str
 ```
 
-Default on where to add new entries.
+* Default group for STUP configuration files. Usually set to the group of the user running the role.
 
 ```yaml
-stup_config_default_edit_at:  today
+stup_config_owner: str
 ```
 
-Default on which day to edit.
+* Default owner for STUP configuration files. Usually set to the user running the role.
 
 ```yaml
-stup_config_default_copy_from: yesterday
+stup_config_stup_editor: str
 ```
 
-Default source for the copy command.
+* Default editor for editig the STUP markdown files.
 
 ```yaml
-stup_config_default_copy_to: today
+stup_path_binary: str
 ```
 
-Defautl destination for the copy command.
+* Sets the name and location of the stup script file.
 
 ```yaml
-stup_config_default_pager: more
+stup_url_git_repository: str
 ```
 
-Default pager to use. Replace with `less` or any other.
+* URL for downloading the STUP GIT repository.
 
 ## Dependencies
 

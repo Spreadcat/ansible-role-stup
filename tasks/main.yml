@@ -3,6 +3,7 @@
 
 - name: Main | Include requirements
   ansible.builtin.include_tasks: requirements.yml
+
 - name: Main | Include install tasks.
   ansible.builtin.include_tasks: install.yml
   when:
@@ -10,8 +11,10 @@
       __stup_version_installed is not defined or
       __stup_version_installed != stup_version
       )
+
 - name: Main | Include config tasks.
   ansible.builtin.include_tasks: config.yml
+
 - name: Main | Include service tasks.
   ansible.builtin.include_tasks: service.yml
 ...

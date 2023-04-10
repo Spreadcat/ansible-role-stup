@@ -1,5 +1,5 @@
 ---
-- name: Install | Update apt cache
+- name: Install | Update apt cache on Debian systems.
   ansible.builtin.apt:
     cache_valid_time: 3600
     update_cache: true
@@ -8,13 +8,13 @@
   when:
     - ansible_os_family|lower == 'debian'
 
-- name: Install | Manage GIT package
+- name: Install | Manage GIT package.
   ansible.builtin.package:
     name: git
     state: present
   become: true
 
-- name: Install | CLone remote GIT repository to TMP.
+- name: Install | CLone remote GIT repository to /tmp.
   ansible.builtin.git:
     repo: "{{ stup_url_git_repository }}"
     dest: "/tmp/git_stup"
@@ -22,7 +22,7 @@
     single_branch: true
     version: "{{ stup_version }}"
 
-- name: Install | Deploy script file
+- name: Install | Deploy script file.
   become: true
   ansible.builtin.copy:
     dest: "{{ stup_path_binary }}"

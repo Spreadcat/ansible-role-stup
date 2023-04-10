@@ -1,20 +1,20 @@
 ---
-- name: Requirements | Check for installed version
+- name: Requirements | Check for installed version.
   ansible.builtin.stat:
     path: "{{ stup_path_binary }}"
   register: __stat_stup
 
-- name: Requirements | Fetch the installed versio number
+- name: Requirements | Fetch the installed version number.
   when: __stat_stup.stat.exists
   block:
 
-    - name: Requirements | Fetch the installed version
+    - name: Requirements | Fetch the installed version.
       ansible.builtin.command:
         cmd: stup --version
       changed_when: false
       register: __command_stup_version
 
-    - name: Requirements | Register the installed version
+    - name: Requirements | Register the installed version.
       ansible.builtin.set_fact:
         __stup_version_installed: "{{ __command_stup_version.stdout | split(' ') | last | lower }}"
       when: __command_stup_version.rc == 0
