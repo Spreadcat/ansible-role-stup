@@ -4,9 +4,9 @@ This role will deploy a local installation of [stup][#github] (STandUP) and conf
 
 ## Requirements
 
-This role needs access to <http://github.com> in order to retrieve a copy of [stup][#github] and install it.
-
-It also requires a local installation of [GIT][#git], which will be automatically installed from the package manager if not already installed.
+* This role needs access to <http://github.com> in order to retrieve a copy of [stup][#github] and install it.
+* It also requires a local installation of [GIT][#git], which will be automatically installed from the package manager if not already installed.
+* The role requires `gathered_facts: true` to be set.
 
 ## Role Variables
 
