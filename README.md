@@ -110,6 +110,12 @@ stup_url_git_repository: str
 
 * URL for downloading the STUP GIT repository.
 
+```yaml
+stup_install_bash_completion: bool
+```
+
+* Installs the bash completion for stup when being set to true.
+
 ## Dependencies
 
 None

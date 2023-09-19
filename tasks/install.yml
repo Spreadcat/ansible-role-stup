@@ -38,3 +38,8 @@
     owner: "{{ stup_config_owner }}"
     group: "{{ stup_config_group }}"
     mode: '0750'
+
+- name: Install | Manage bash completion file.
+  ansible.builtin.include_tasks:
+    file: ./install_bash_completion.yml
+  when: stup_install_bash_completion

@@ -25,15 +25,23 @@
         (_verify_file is failed)
         )
 
-    - name: Molecule | Ensure config paarameters are set.
-      community.general.ini_file:
-        state: present
+    - name: Molecule | Ensure bash completion has been deployed.
+      ansible.builtin.file:
+        name: "/etc/bash_completion.d/stup.bash_completion"
+        owner: root
+        group: root
+        mode: '0644'
+      when:
+        - stup_install_bash_completion
+
+    - name: Molecule | Ensure config parameters are set.
+      ansible.builtin.lineinfile:
         path: "{{ stup_config_path }}"
-        section: null
-        option: "{{ item.option }}"
-        value: "{{ item.value }}"
+        line: "{{ config_setting.option }}={{ config_setting.value }}"
         mode: '0750'
-        no_extra_spaces: true
+        owner: "{{ stup_config_owner }}"
+      loop_control:
+        loop_var: config_setting
       register: _verify_ini_file
       failed_when: (
         (_verify_ini_file is changed) or

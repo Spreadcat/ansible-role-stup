@@ -1,0 +1,17 @@
+---
+- name: Install bash completion package.
+  ansible.builtin.package:
+    name: bash-completion
+    state: present
+  become: true
+
+- name: Install bash completion script.
+  ansible.builtin.copy:
+    dest: /etc/bash_completion.d/stup.bash_completion
+    src: stup-completions
+    force: true
+    backup: true
+    owner: root
+    group: root
+    mode: '0644'
+  become: true

@@ -3,3 +3,6 @@ stup_config_owner: ansible
 stup_config_group: ansible
 stup_config_path: /home/ansible/.config/stup.conf
 stup_config_categories_root: /home/ansible/stup
+
+# Deploy the bash completion file
+stup_install_bash_completion: true

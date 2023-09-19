@@ -4,16 +4,15 @@
 # This module should be replaced with the template module instead.
 # A header in the file is also missing.
 - name: Config | Set config options.
-  community.general.ini_file:
-    state: present
-    path: "{{ stup_config_path }}"
-    section: null
-    option: "{{ item.option }}"
-    value: "{{ item.value }}"
+  ansible.builtin.lineinfile:
+    line: "{{ config_setting.option }}={{ config_setting.value }}"
+    create: true
+    dest: "{{ stup_config_path }}"
     owner: "{{ stup_config_owner }}"
     group: "{{ stup_config_group }}"
     mode: '0750'
-    no_extra_spaces: true
+  loop_control:
+    loop_var: config_setting
   loop:
     - option: categories_root
       value: "{{ stup_config_categories_root }}"

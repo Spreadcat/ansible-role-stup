@@ -137,3 +137,11 @@ stup_version: "v1.0.0"
 #
 # doca tags:other
 stup_path_binary: "/usr/local/bin/stup"
+
+# Installs the bash completion for stup when being set to true.
+#
+# Example:
+#   stup_install_bash_completion: true
+#
+# doca tags:other
+stup_install_bash_completion: false
